@@ -22,7 +22,7 @@ for line in joeRead:
 print(joeBracket)
 
 # build bracket rachel
-rachelRead = open("joseph.txt", "r")
+rachelRead = open("rachel.txt", "r")
 rachelBracket = {}
 for line in rachelRead:
     list = []
@@ -41,6 +41,43 @@ for line in eliminationRead:
     elimination[list[0]] = list[1]
 print(elimination)
 
-gone = elimination["Wk1"]
-for x in gone.split(" "):
-    print(x)
+# divide week 1 losers to a list
+week = elimination["Wk1"]
+contest = []
+for x in week.split(" "):
+    contest.append(x)
+print(contest)
+
+# divide week 1 picks to a list
+joeWeek1 = joeBracket["Wk1"]
+joePicks = []
+for x in joeWeek1.split(" "):
+    joePicks.append(x)
+print(joePicks)
+
+# remove the loser form picks
+for loser in contest:
+    for pick in joePicks:
+        if loser == pick:
+            joePicks.remove(pick)
+print(joePicks)
+
+# get total points for week
+joePt = 0
+joePt = len(joePicks)
+print(joePt)
+
+# gets total potential points based on who is still in
+joeTotal = 0
+joePicks = []
+for week in joeBracket:
+    joePicks = []
+    for x in joeBracket[week].split(" "):
+        joePicks.append(x)
+    print(joePicks)
+    for loser in contest:
+        for pick in joePicks:
+            if loser == pick:
+                joePicks.remove(pick)
+    joeTotal += len(joePicks)
+print(joeTotal)
