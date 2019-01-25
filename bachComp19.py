@@ -42,14 +42,15 @@ for line in eliminationRead:
 print(elimination)
 
 # divide week 1 losers to a list
-week = elimination["Wk1"]
+week = elimination["1"]
 contest = []
 for x in week.split(" "):
     contest.append(x)
+print("hi")
 print(contest)
 
 # divide week 1 picks to a list
-joeWeek1 = joeBracket["Wk1"]
+joeWeek1 = joeBracket["1"]
 joePicks = []
 for x in joeWeek1.split(" "):
     joePicks.append(x)
@@ -81,3 +82,20 @@ for week in joeBracket:
                 joePicks.remove(pick)
     joeTotal += len(joePicks)
 print(joeTotal)
+
+# new looping way
+joeTotal = 0
+joePicks = []
+loser = []
+for elimWk in elimination.split(" "):
+    loser.append(elimWk)
+    joePicks = []
+    for week in joeBracket.split(" "):
+        if elimWk >= week:
+            joePicks.append(week)
+            print(joePicks)
+        for lose in loser:
+            for pick in joePicks:
+                if lose == pick:
+                    joePick.remove(pick)
+    j
